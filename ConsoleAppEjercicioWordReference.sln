@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppEjercicioWordReference", "ConsoleAppEjercicioWordReference\ConsoleAppEjercicioWordReference.csproj", "{FC714498-F752-4684-9F19-DBA5639ADEBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC714498-F752-4684-9F19-DBA5639ADEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC714498-F752-4684-9F19-DBA5639ADEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC714498-F752-4684-9F19-DBA5639ADEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC714498-F752-4684-9F19-DBA5639ADEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A393F1A2-93EC-4A58-8B60-C9A470D9DCE8}
+	EndGlobalSection
+EndGlobal

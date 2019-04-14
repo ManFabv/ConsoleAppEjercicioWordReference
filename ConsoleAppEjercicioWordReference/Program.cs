@@ -1,41 +1,66 @@
 ﻿using System;
-using System.IO;
-using System.IO.Compression;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using RestSharp;
 
 namespace ConsoleAppEjercicioWordReference
 {
-    class Program
+    static class Program
     {
-        private static string URL = @"http://www.wordreference.com/definicion";
-
-        static void Main(string[] args)
+        private static string URL = @"http://www.wordreference.com/definicion/";
+        private static bool UseUserAgent = true;
+        private static bool AcceptGzipCompresion = true;
+        static void Main()
         {
-            var htmlPage = BajarPaginaAsync("perro").Result;
+            Console.Write("Palabra a buscar: ");
+            var palabraBuscada = Console.ReadLine();
 
-            Console.WriteLine(htmlPage);
+            Console.Write("\nConsiguiendo datos. Espere... ");
+            var htmlPage = BajarPaginaAsync(palabraBuscada).Result;
 
-            Console.Write("Final...");
+            var pattern = GetPatternDefinicionPalabra();
+            var definicion = GetDefinicionDePalabra(htmlPage, pattern);
+
+            Console.WriteLine($"\n\nDefinicion de {palabraBuscada}:\n");
+            Console.WriteLine(definicion);
+
+            Console.Write("Presione una tecla para finalizar... ");
             Console.ReadKey();
         }
 
         static async Task<string> BajarPaginaAsync(string palabra)
         {
             var handler = new HttpClientHandler();
-            handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
+
+            if(AcceptGzipCompresion)
+                handler.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
             using (HttpClient client = new HttpClient(handler))
             { 
-                client.DefaultRequestHeaders.Add("User-Agent", "C# App");
-                HttpResponseMessage response = await client.GetAsync($"{URL}//{palabra.ToLower()}");
+                if(UseUserAgent)
+                    client.DefaultRequestHeaders.Add("User-Agent", "WordReference Scraping App");
+
+                HttpResponseMessage response = await client.GetAsync($"{URL}{palabra.ToLower()}");
                 return await response.Content.ReadAsStringAsync();
             }
+        }
+
+        static string GetDefinicionDePalabra(string htmlPage, string pattern)
+        {
+            var definicion = string.Empty;
+
+            //TODO: Procesar la pagina
+
+            return definicion;
+        }
+
+        static string GetPatternDefinicionPalabra()
+        {
+            var pattern = string.Empty;
+
+            //TODO: generar pattern
+
+            return pattern;
         }
     }
 }
